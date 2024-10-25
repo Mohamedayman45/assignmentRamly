@@ -10,7 +10,6 @@ void machine ::filee(string name) {
 
     if (file.is_open()) {
         while (getline(file, line)) {
-            // Process each line here
             cout << line << endl;
         }
         file.close();
