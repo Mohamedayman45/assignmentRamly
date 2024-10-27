@@ -1,16 +1,18 @@
-//
-// Created by User on 10/24/2024.
-//
+#include <bits/stdc++.h>
 
 #ifndef MEMORY_H
 #define MEMORY_H
+
+using namespace std;
+
 class memory
 {
-private:
-    /* data */
 public:
-    int getvalue();
+    // Constructor that allows specifying the size
+
+    static vector<string> ReadToVector(string filename); // file name in this function
+    virtual void setCell(int adress, string value);
+    virtual string getCell(int address);
 };
 
 #endif
-

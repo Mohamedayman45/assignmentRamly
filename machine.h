@@ -7,9 +7,13 @@
 using namespace std;
 
 class machine {
-public:
-    void filee(string);
+    private:
+        
+
+    public:
+        
 };
+
 
 
 #endif
