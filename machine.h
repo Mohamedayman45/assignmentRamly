@@ -11,7 +11,10 @@ class machine {
         
 
     public:
-        
+    void load1(int r, int xy) ;
+    void load2(int r, int xy) ;
+    void store(int r, int xy);
+    void move(int r, int s) ;
 };
 
 
