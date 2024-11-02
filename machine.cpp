@@ -15,6 +15,6 @@ void machine ::load2(int r, string value) {
 }
 void machine ::store(int r, int xy) {
     cout << "store";
-    cout << "r is " <<r << endl;
+    cout << "r is " << r << endl;
     cout << "xy is " << xy << endl;
 }
