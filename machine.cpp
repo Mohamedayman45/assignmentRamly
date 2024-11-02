@@ -6,12 +6,12 @@
 #include <bits/stdc++.h>
 
 void machine :: load1(int r, string value) {
-    MemoryRegister get;
-    get.setregister(r, value);
+    MemoryRegisters Registers;
+    Registers.setRegister(r, value);
 }
-void machine ::load2(int r, string valuee) {
-    MemoryRegister set;
-    set.setregister(r ,valuee);
+void machine ::load2(int r, string value) {
+    MemoryRegisters Registers;
+    Registers.setRegister(r , value);
 }
 void machine ::store(int r, int xy) {
     cout << "store";

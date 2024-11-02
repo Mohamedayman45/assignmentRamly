@@ -7,19 +7,19 @@
 #include "machine.h"
 #include <bits/stdc++.h>
 
-vector<string> MemoryRegister::registers(16, "00");  // Initialize once
+vector<string> MemoryRegisters::registers(16, "00");  // Initialize once
 
-MemoryRegister::MemoryRegister() {
+MemoryRegisters::MemoryRegisters() {
 }
 
-void MemoryRegister ::setregister(int adress, string valuee)
+void MemoryRegisters ::setRegister(int address, string value)
 {
-    registers[adress]=valuee;
+    registers[address] = value;
 }
-string MemoryRegister ::getregister(int adress) {
-    return registers[adress];
+string MemoryRegisters ::getRegister(int address) {
+    return registers[address];
 }
-int MemoryRegister ::showregisterr() {
+void MemoryRegisters ::showRegisters() {
     for (int i=0;i<registers.size();++i){
         cout <<"register " << i << " equall to " << registers[i] << endl;
     }

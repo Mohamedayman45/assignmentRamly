@@ -4,6 +4,6 @@
 
 #include "ALU.h"
 
-int ALU ::hextodec(string hex) {
+int ALU ::hexToDec(string hex) {
     return stoi(hex, nullptr, 16);
 }

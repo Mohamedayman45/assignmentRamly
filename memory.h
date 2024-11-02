@@ -11,7 +11,7 @@ public:
     // Constructor that allows specifying the size
 
     static vector<string> ReadToVector(string filename); // file name in this function
-    virtual void setCell(int adress, string value);
+    virtual void setCell(int address, string value);
     virtual string getCell(int address);
 };
 

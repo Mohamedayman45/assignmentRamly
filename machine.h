@@ -14,7 +14,7 @@ class machine
 private:
 public:
     void load1(int r, string value);
-    void load2(int r, string valuee);
+    void load2(int r, string value);
     void store(int r, int xy);
     void move(int r, int s);
 };

@@ -4,16 +4,16 @@
 #ifndef VOLE_MACHINE_REGISTERR_H
 #define VOLE_MACHINE_REGISTERR_H
 
-class MemoryRegister
+class MemoryRegisters
 {
 private:
     static vector<string> registers;
 
 public:
-    MemoryRegister();
-    void  setregister(int adress,string value);
-    string getregister(int adress);
-    int showregisterr();
+    MemoryRegisters();
+    void setRegister(int address, string value);
+    string getRegister(int adress);
+    void showRegisters();
 };
 
 #endif // VOLE_MACHINE_REGISTERR_H

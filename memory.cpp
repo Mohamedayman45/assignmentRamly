@@ -29,57 +29,71 @@ vector<string> memory::ReadToVector(string name)
             Instructions.push_back(word.substr(2, 2));
         }
     }
-    for (int i=0;i < Instructions.size();i+=2){
-        cout << Instructions[i] << Instructions[i+1]<<  endl;
+    for (int i = 0; i < Instructions.size(); i += 2)
+    {
+        cout << Instructions[i] << Instructions[i + 1] << endl;
     }
     instructionsFile.close();
-    ALU XY;
-    machine h;
+    ALU Alu;
+    machine Vole;
     int op;
-    for (int i=0;i<Instructions.size();i+=2){
-        if(Instructions[i].substr(0,1)=="B"){
-            op =7;
+    for (int i = 0; i < Instructions.size(); i += 2)
+    {
+        // Instructions[i] is instruction number and register number
+        // Instructions[i + 1] is memory value saved at address i + 1 in (decimal)
+        
+        if (Instructions[i].substr(0, 1) == "B")
+        {
+            op = 7;
         }
-        else if (Instructions[i].substr(0,1)=="C"){
-            op=8;
+        else if (Instructions[i].substr(0, 1) == "C")
+        {
+            op = 8;
         }
-        else {
+        else
+        {
             op = stoi(Instructions[i].substr(0, 1));
         }
-        int r= stoi(Instructions[i].substr(1,1));
-        int xy= XY.hextodec(Instructions[i+1]);
-        string value = Cell.getCell(xy);
-        switch (op) {
-            case 1:
-                h.load1(r,value);
-                break;
-            case 2:
-                h.load2(r,Instructions[i+1]);
-                break;
+        int registerNumber = stoi(Instructions[i].substr(1, 1));
+        int memoryAddressOp1 = Alu.hexToDec(Instructions[i + 1]);
+        string value = Cell.getCell(memoryAddressOp1);
+        switch (op)
+        {
+        case 1:
+            Vole.load1(registerNumber, value);
+            break;
+        case 2:
+            Vole.load2(registerNumber, Instructions[i + 1]);
+            break;
         }
     }
-    MemoryRegister coutt;
-    coutt.showregisterr();
+
+    MemoryRegisters Registers;
+    Registers.showRegisters();
 
     return Instructions;
 }
-void memory::setCell(int adress, string value)
+void memory::setCell(int address, string value)
 {
-    if (adress >= 0 && adress < 256){
-        Instructions[adress]=value;
+    if (address >= 0 && address < 256)
+    {
+        Instructions[address] = value;
     }
-    else{
+    else
+    {
         cout << "invalid address";
     }
-
 }
 
-string memory::getCell(int adress)
+string memory::getCell(int address)
 {
-    if (adress >= 0 && adress < 256){
-        return Instructions[adress];
+    if (address >= 0 && address < 256)
+    {
+        return Instructions[address];
     }
-    else{
+    else
+    {
         cout << "invalid address";
+        return "XX"; //for non void return
     }
 }

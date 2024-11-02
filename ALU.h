@@ -11,7 +11,7 @@ using namespace std;
 
 class ALU {
     public:
-        int hextodec(string hex);
+        int hexToDec(string hex);
 };
 
 
