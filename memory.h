@@ -5,12 +5,9 @@
 
 using namespace std;
 
-class memory
-{
+class Memory { // Renamed the class to Memory
 public:
-    // Constructor that allows specifying the size
-
-    static vector<string> ReadToVector(string filename); // file name in this function
+    static vector<string> ReadToVector(string filename);
     virtual void setCell(int address, string value);
     virtual string getCell(int address);
 };

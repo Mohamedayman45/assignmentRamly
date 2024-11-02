@@ -21,6 +21,6 @@ string MemoryRegisters ::getRegister(int address) {
 }
 void MemoryRegisters ::showRegisters() {
     for (int i=0;i<registers.size();++i){
-        cout <<"register " << i << " equall to " << registers[i] << endl;
+        cout <<"R" << i << " " << registers[i] << endl;
     }
 }

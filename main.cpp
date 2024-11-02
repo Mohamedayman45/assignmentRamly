@@ -10,6 +10,7 @@ int main()
     // string fileName;
     // cin >> fileName;
 
-    vector<string> memory = memory::ReadToVector("instructions.txt");
-    
+    vector<string> instructions = Memory::ReadToVector("instructions.txt");
+
+
 }

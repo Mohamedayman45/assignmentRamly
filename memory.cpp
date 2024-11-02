@@ -9,8 +9,8 @@
 
 using namespace std;
 vector<string> Instructions;
-memory Cell;
-vector<string> memory::ReadToVector(string name)
+Memory Cell;
+vector<string> Memory::ReadToVector(string name)
 {
 
     ifstream instructionsFile(name);
@@ -66,14 +66,13 @@ vector<string> memory::ReadToVector(string name)
             Vole.load2(registerNumber, Instructions[i + 1]);
             break;
         }
+        
     }
-
     MemoryRegisters Registers;
     Registers.showRegisters();
-
     return Instructions;
 }
-void memory::setCell(int address, string value)
+void Memory::setCell(int address, string value)
 {
     if (address >= 0 && address < 256)
     {
@@ -85,7 +84,7 @@ void memory::setCell(int address, string value)
     }
 }
 
-string memory::getCell(int address)
+string Memory::getCell(int address)
 {
     if (address >= 0 && address < 256)
     {
