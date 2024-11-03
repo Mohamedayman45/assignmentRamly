@@ -34,9 +34,10 @@ int main()
         {
             op = stoi(Instructions[i].substr(0, 1));
         }
-        int registerNumber = stoi(Instructions[i].substr(1, 1));
+        int registerNumber = Alu.hexToDec(Instructions[i].substr(1, 1));
         int memoryAddressOp1 = Alu.hexToDec(Instructions[i + 1]);
         string value = Cell.getCell(memoryAddressOp1);
+        string programCounter = Instructions[i];
         switch (op)
         {
 
@@ -65,9 +66,12 @@ int main()
         //TODO TASK 4
         // 4 0RS MOVE the bit pattern found in register R to register S.
         // Example: 40A4 would cause the contents of register A to be copied into register 4.
-        // case 4:                         // UNCOMMENT when implementing
-        
-
+        case 4: {                    // UNCOMMENT when implementing
+            registerNumber = Alu.hexToDec(Instructions[i + 1].substr(0, 1));
+            int register2Number = Alu.hexToDec(Instructions[i + 1].substr(1, 1));
+            Vole.Register1ToRegister2(registerNumber, register2Number);
+            break;
+        }
         //TODO TASK 5
         // 5 RST ADD the bit patterns in registers S and T as though they were two’s complement representations
         // and leave the result in register R.
@@ -91,21 +95,31 @@ int main()
         // Example: B43C would first compare the contents of register 4 with the contents of register 0. If
         // the two were equal, the pattern 3C would be placed in the program counter so that the next
         // instruction executed would be the one located at that memory address. Otherwise,
-        case 7:                         // UNCOMMENT when implementing
-            i = Vole.jump(registerNumber,memoryAddressOp1,i);
+        case 7: {
+            // Use a block for `case 7` to prevent scope conflicts
+            i = Vole.jump(registerNumber, memoryAddressOp1, i);
             break;
+        }
         
 
-        //TODO TASK 8
-        // C 000 HALT execution.
-        // Example: C000 would cause program execution to stop.
-        // case 8:                         // UNCOMMENT when implementing
-        
+        case 8:
+            return 0; // HALT execution
+
+        default:
+            MemoryRegisters Registers;
+            Registers.showRegisters();
+            cout << "Invalid operation encountered. Halting execution." << endl;
+            return 0; // HALT execution in case of an invalid operation
 
         }
+
+
+
     }
     MemoryRegisters Registers;
     Registers.showRegisters();
     
 
 }
+
+

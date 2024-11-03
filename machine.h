@@ -16,8 +16,11 @@ public:
     void load1(int r, string value);
     void load2(int r, string value);
     void store(int r, int xy);
+
     void move(int r, int s);
-    int jump(int registerNumber, int memoryAddressOp1);
+    void Register1ToRegister2(int register1, int register2);
+
+    int jump(int registerNumber, int memoryAddressOp1, int i);
 };
 
 #endif
