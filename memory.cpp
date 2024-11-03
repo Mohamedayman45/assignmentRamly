@@ -40,6 +40,9 @@ vector<string> Memory::ReadToVector(string name)
 
     for (int i = 0; i < Instructions.size(); i += 2)
     {
+        if (Instructions[i] == "00"){ // To not print initialized 00s
+            break;
+        }
         cout << Instructions[i] << Instructions[i + 1] << endl;
     }
 

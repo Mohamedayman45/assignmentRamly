@@ -12,7 +12,7 @@ int main()
     // cin >> fileName;
     
     vector<string> Instructions = Memory::ReadToVector("instructions.txt");
-    
+    MemoryRegisters Registers;
     Memory Cell;
     ALU Alu;
     machine Vole;
@@ -106,17 +106,13 @@ int main()
             return 0; // HALT execution
 
         default:
-            MemoryRegisters Registers;
             Registers.showRegisters();
             cout << "Invalid operation encountered. Halting execution." << endl;
             return 0; // HALT execution in case of an invalid operation
 
         }
 
-
-
     }
-    MemoryRegisters Registers;
     Registers.showRegisters();
     
 
