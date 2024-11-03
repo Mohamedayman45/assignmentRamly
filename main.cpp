@@ -17,16 +17,20 @@ int main()
     ALU Alu;
     machine Vole;
     int op;
+    bool halt = false;
     for (int i = 0; i < Instructions.size(); i += 2)
     {
         // Instructions[i] is instruction number and register number
         // Instructions[i + 1] is memory value saved at address i + 1 in (decimal)
-        
-        if (Instructions[i].substr(0, 1) == "B")
+        char firstChar = toupper(Instructions[i][0]);
+        if (halt) {
+            break;
+        }
+        if (firstChar == 'B')
         {
             op = 7;
         }
-        else if (Instructions[i].substr(0, 1) == "C")
+        else if (firstChar == 'C')
         {
             op = 8;
         }
@@ -103,13 +107,13 @@ int main()
         
 
         case 8:
-            return 0; // HALT execution
+            halt = true;
+            break; // HALT execution
 
         default:
             Registers.showRegisters();
-            cout << "Invalid operation encountered. Halting execution." << endl;
-            return 0; // HALT execution in case of an invalid operation
-
+            i += 2;
+            cout << "Invalid operation encountered! Ignoring Operation..." << endl;
         }
 
     }
