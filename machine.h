@@ -17,6 +17,7 @@ public:
     void load2(int r, string value);
     void store(int r, int xy);
     void move(int r, int s);
+    int jump(int registerNumber, int memoryAddressOp1);
 };
 
 #endif
