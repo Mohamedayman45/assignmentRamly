@@ -91,7 +91,9 @@ int main()
         // Example: B43C would first compare the contents of register 4 with the contents of register 0. If
         // the two were equal, the pattern 3C would be placed in the program counter so that the next
         // instruction executed would be the one located at that memory address. Otherwise,
-        // case 7:                         // UNCOMMENT when implementing
+        case 7:                         // UNCOMMENT when implementing
+            i = Vole.jump(registerNumber,memoryAddressOp1,i);
+            break;
         
 
         //TODO TASK 8
