@@ -1,19 +1,15 @@
-// #include "cpu.h"
-#include "memory.h"
 #include "machine.h"
-#include "registerr.h"
-#include "ALU.h"
 
-using namespace std;
+
 
 int main()
 {
     // string fileName;
     // cin >> fileName;
     
-    vector<string> Instructions = Memory::ReadToVector("instructions.txt");
+    Memory Memory;
+    vector<string> Instructions = Memory.ReadToVector("instructions.txt");
     MemoryRegisters Registers;
-    Memory Cell;
     ALU Alu;
     machine Vole;
     int op;
@@ -40,7 +36,7 @@ int main()
         }
         int registerNumber = Alu.hexToDec(Instructions[i].substr(1, 1));
         int memoryAddressOp1 = Alu.hexToDec(Instructions[i + 1]);
-        string value = Cell.getCell(memoryAddressOp1);
+        string value = Memory.getCell(memoryAddressOp1);
         string programCounter = Instructions[i];
         switch (op)
         {
@@ -67,7 +63,7 @@ int main()
         // case 3:                         // UNCOMMENT when implementing
 
 
-        //TODO TASK 4
+
         // 4 0RS MOVE the bit pattern found in register R to register S.
         // Example: 40A4 would cause the contents of register A to be copied into register 4.
         case 4: {                    // UNCOMMENT when implementing
@@ -76,6 +72,7 @@ int main()
             Vole.Register1ToRegister2(registerNumber, register2Number);
             break;
         }
+        
         //TODO TASK 5
         // 5 RST ADD the bit patterns in registers S and T as though they were two’s complement representations
         // and leave the result in register R.
@@ -89,10 +86,12 @@ int main()
         // notation and leave the floating-point result in register R.
         // Example: 634E would cause the values in registers 4 and E to be added as floating-point values
         // and the result to be placed in register 3.
-        // case 6:                         // UNCOMMENT when implementing
-
-
-        //TODO TASK 7
+        case 6: {                         // UNCOMMENT when implementing
+            registerNumber = Alu.hexToDec(Instructions[i + 1].substr(0, 1));
+            int register2Number = Alu.hexToDec(Instructions[i + 1].substr(1, 1));
+            int register3Number = Alu.hexToDec(Instructions[i].substr(1, 1));
+            Vole.FloatingPointToRegister3(registerNumber, register2Number, register3Number);
+        }
         // B RXY JUMP to the instruction located in the memory cell at address XY if the bit pattern in register R
         // is equal to the bit pattern in register number 0. Otherwise, continue with the normal sequence of
         // execution. (The jump is implemented by copying XY into the program counter during the execute phase.)
@@ -122,4 +121,10 @@ int main()
 
 }
 
-
+// Test Jump
+// 2011
+// 2104
+// 2A25
+// bA05
+// 1721
+// c000

@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug C++",
+            "name": "Debug C++ Working",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/main", // Path to your compiled executable
+            "program": "${workspaceFolder}/main",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -14,20 +14,13 @@
             "MIMode": "gdb",
             "setupCommands": [
                 {
-                    "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
+                    "description": "Enable pretty-printing for gdb",
                     "ignoreFailures": true
                 }
             ],
             "preLaunchTask": "build",
-            "miDebuggerPath": "/usr/bin/gdb", // Path to GDB
-            "setupCommands": [
-                {
-                    "text": "-enable-pretty-printing",
-                    "description": "Enable pretty-printing for gdb",
-                    "ignoreFailures": true
-                }
-            ],
+            "miDebuggerPath": "/usr/bin/gdb",
             "logging": {
                 "engineLogging": false,
                 "trace": false,

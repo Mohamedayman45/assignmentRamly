@@ -12,7 +12,9 @@ using namespace std;
 class ALU {
     public:
         int hexToDec(string hex);
+        string HexToBinary(string hex);
 };
+
 
 
 #endif //A1_T4_MAIN_ALU_H

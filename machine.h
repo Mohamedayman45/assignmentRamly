@@ -3,10 +3,10 @@
 //
 #ifndef MACHINE_H
 #define MACHINE_H
-#include "machine.h"
 #include "memory.h"
 #include "registerr.h"
-#include <bits/stdc++.h>
+#include "ALU.h"
+
 using namespace std;
 
 class machine
@@ -19,7 +19,7 @@ public:
 
     void move(int r, int s);
     void Register1ToRegister2(int register1, int register2);
-
+    void FloatingPointToRegister3(int register1, int register2, int register3);
     int jump(int registerNumber, int memoryAddressOp1, int i);
 };
 
