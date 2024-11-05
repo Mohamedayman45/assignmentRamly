@@ -65,6 +65,8 @@ int main()
         }
         int registerNumber = Alu.hexToDec(Instructions[i].substr(1, 1));
         int memoryAddressOp1 = Alu.hexToDec(Instructions[i + 1]);
+        int memoryAddressOp2 = Alu.hexToDec(Instructions[i+1].substr(0, 1));
+        int memoryAddressOp3 = Alu.hexToDec(Instructions[i+1].substr(1, 1));
         string value = Memory.getCell(memoryAddressOp1);
         string programCounter = Instructions[i];
         switch (op)
@@ -84,16 +86,14 @@ int main()
             Vole.load2(registerNumber, Instructions[i + 1]);
             break;
 
-
-        //TODO TASK 3
         // 3 RXY STORE the bit pattern found in register R in the memory cell whose address is XY.
         // Example: 35B1 would cause the contents of register 5 to be placed in the memory cell whose address is B1.
         // 3 R00 STORE to location 00, which is a memory mapping for the screen. Writing to 00 is writing to screen.
-        // case 3:                         // UNCOMMENT when implementing
+        case 3:
+            Vole.store(registerNumber, memoryAddressOp1);
+            break;
 
-
-
-        // 4 0RS MOVE the bit pattern found in register R to register S.
+                // 4 0RS MOVE the bit pattern found in register R to register S.
         // Example: 40A4 would cause the contents of register A to be copied into register 4.
         case 4: {                    // UNCOMMENT when implementing
             registerNumber = Alu.hexToDec(Instructions[i + 1].substr(0, 1));
@@ -101,12 +101,9 @@ int main()
             Vole.Register1ToRegister2(registerNumber, register2Number);
             break;
         }
-        
-        //TODO TASK 5
-        // 5 RST ADD the bit patterns in registers S and T as though they were two’s complement representations
-        // and leave the result in register R.
-        // Example: 5726 would cause the binary values in registers 2 and 6 to be added and the sum placed in register 7.
-        // case 5:                          // UNCOMMENT when implementing
+        case 5:
+            Vole.add(registerNumber, memoryAddressOp2, memoryAddressOp3);
+            break;
         
 
 
@@ -142,6 +139,7 @@ int main()
             Registers.showRegisters();
             i += 2;
             cout << "Invalid operation encountered! Ignoring Operation..." << endl;
+            break;
         }
         if (DisplayRegStepByStep=="Y" || DisplayRegStepByStep=="y"){
             cout << "the Registers after instruction number "<< ++RegisterCounter << endl;

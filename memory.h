@@ -13,7 +13,7 @@ public:
     vector<string> ReadToVector(string filename); // Instance method
     string getCell(int address); // Instance method
     virtual void setCell(int address, string value);
-    vector<string> Instructions; // Instance member
+    static vector<string> Instructions; // Instance member
     void showMemory();
 private:
     bool isValidHexCharacter(char c); // Instance validation function

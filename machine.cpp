@@ -4,8 +4,9 @@
 
 
 #include "machine.h"
+#include "registerr.h"
 #include <bits/stdc++.h>
-
+Memory Cell;
 MemoryRegisters Registers;
 void machine :: load1(int r, string value) {
     Registers.setRegister(r, value);
@@ -13,11 +14,14 @@ void machine :: load1(int r, string value) {
 void machine ::load2(int r, string value) {
     Registers.setRegister(r , value);
 }
-
-void machine ::store(int r, int xy) {
-    cout << "store";
-    cout << "r is " << r << endl;
-    cout << "xy is " << xy << endl;
+void machine::store(int r, int xy) {
+    string value = Registers.getRegister(r);
+    if (xy == 0x00) {
+        cout << "Output to screen: " << value << endl;
+    } else {
+        Cell.setCell(xy, value);
+        cout << "Stored value " << value << " from register " << r << " to memory address " << hex << xy << endl;
+    }
 }
 
 void machine ::Register1ToRegister2(int register1, int register2) {
@@ -82,4 +86,19 @@ int machine ::jump(int registerNumber, int memoryAddressOp1, int i) {
         return memoryAddressOp1 - 2;
     }
     return i;
+}
+string machine::getRegisterValue(int r) {
+    return registers.getRegister(r);
+}
+
+void machine::add(int r, int s, int t) {
+
+    int valueS = std::stoi(registers.getRegister(s), nullptr, 16);
+    int valueT = std::stoi(registers.getRegister(t), nullptr, 16);
+
+    int result = valueS + valueT;
+    stringstream ss;
+    ss << hex << (result & 0xFFFF);
+    registers.setRegister(r, ss.str());
+
 }

@@ -8,7 +8,6 @@ class MemoryRegisters
 {
 private:
     static vector<string> registers;
-
 public:
     MemoryRegisters();
     void setRegister(int address, string value);

@@ -4,9 +4,11 @@
 #include "memory.h"
 
 
-Memory::Memory() : Instructions(256, "00") {};
+Memory::Memory(){
 
+};
 
+vector <string>Memory:: Instructions (256, "00");
 vector<string> Memory::ReadToVector(string name) {
     ifstream instructionsFile(name);
     if (!instructionsFile.is_open()) {
@@ -45,7 +47,18 @@ vector<string> Memory::ReadToVector(string name) {
     instructionsFile.close();
     return Instructions;
 }
-
+void Memory::setCell(int address, string value)
+{
+    cout << "ana hena " << address << "   ";
+    if (address >= 0 && address < 256)
+    {
+        Instructions[address] = value;
+    }
+    else
+    {
+        cout << "invalid address";
+    }
+}
 
 bool Memory::isValidHexCharacter(char c) {
     return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F');
@@ -70,18 +83,6 @@ bool Memory::isValidInstruction(const string& word) {
     }
 
     return true; // All checks passed
-}
-
-void Memory::setCell(int address, string value)
-{
-    if (address >= 0 && address < 256)
-    {
-        Instructions[address] = value;
-    }
-    else
-    {
-        cout << "invalid address";
-    }
 }
 
 string Memory::getCell(int address)
