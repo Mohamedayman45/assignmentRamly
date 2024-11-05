@@ -9,6 +9,8 @@
         "span": "cpp",
         "stacktrace": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     }
 }

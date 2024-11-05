@@ -13,6 +13,12 @@ class ALU {
     public:
         int hexToDec(string hex);
         string HexToBinary(string hex);
+        string convertFractionalPartToBinary(double fractionalPart);
+        string binaryToHex(const string& binary);
+        string convertDecimalToBinary(double number, int &normalizedExponent);
+        double convertBinaryToDecimal(int sign, int exponentShift, const string &BinaryMantissaWithoutZeroes);
+        string convertDecimalToFloatingPoint(double decimalNumber);
+
 };
 
 

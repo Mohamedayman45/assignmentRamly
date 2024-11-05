@@ -116,7 +116,7 @@ int main()
         }
 
     }
-    Registers.showRegisters();
+    // Registers.showRegisters();
     
 
 }
