@@ -1,19 +1,48 @@
 #include "machine.h"
+#include <bits/stdc++.h>
+int getIntegerInput() {
+    string input;
+    int value;
 
-
+    while (true) {
+        getline(cin, input);
+        stringstream ss(input);
+        if (ss >> value && ss.eof()) {
+            return value;
+        } else {
+            cout << endl << "Please enter a valid integer." <<endl;
+        }
+    }
+}
 
 int main()
 {
-    // string fileName;
-    // cin >> fileName;
-    
+    string fileName;
+    cout << "enter the name of the file to execute the instructions" << endl;
+    cin >> fileName;
+    ifstream isOpenFile(fileName);
+    if (!isOpenFile.is_open()) {
+        cerr << "Error: Could not open Instructions File." << endl;
+        cin >> fileName;
+    }
+
     Memory Memory;
-    vector<string> Instructions = Memory.ReadToVector("instructions.txt");
+    vector<string> Instructions = Memory.ReadToVector(fileName);
     MemoryRegisters Registers;
     ALU Alu;
     machine Vole;
     int op;
     bool halt = false;
+    string DisplayRegStepByStep;
+    cout << "Do you want to display the Register step by step ?" << endl
+    << "Y for displaying if any they will not display step by step" << endl;
+    cin >> DisplayRegStepByStep;
+    string DisplayMemStepByStep;
+    cout << "Do you want to display the Memory step by step ?" << endl
+         << "Y for displaying if any they will not display step by step" << endl;
+    cin >> DisplayMemStepByStep;
+    int RegisterCounter=0;
+    int MemoryCounter=0;
     for (int i = 0; i < Instructions.size(); i += 2)
     {
         // Instructions[i] is instruction number and register number
@@ -114,11 +143,47 @@ int main()
             i += 2;
             cout << "Invalid operation encountered! Ignoring Operation..." << endl;
         }
+        if (DisplayRegStepByStep=="Y" || DisplayRegStepByStep=="y"){
+            cout << "the Registers after instruction number "<< ++RegisterCounter << endl;
+            Registers.showRegisters();
+        }
+        if (DisplayMemStepByStep=="Y" || DisplayMemStepByStep=="y"){
+            cout << "the Registers after instruction number "<< ++MemoryCounter << endl;
+            Memory.showMemory();
+        }
 
     }
-    Registers.showRegisters();
-    
-
+    cout << "what what do you want to do ? " << endl
+    << "1)display the status of the REGISTERS " << endl
+    << "2)display the status of the PC " << endl
+    << "3)display the status of the IR " << endl
+    << "4)display the status of the MEMORY " << endl
+    << "5) if you want to exit the program";
+    int ToDo=getIntegerInput();
+    while (true) {
+        if (ToDo==1) {
+            Registers.showRegisters();
+        }
+        //else if (ToDo==2) {
+        //display program counter
+        //}
+        //else if (ToDo==3) {
+        //display IR
+        //}
+        else if (ToDo==4) {
+            Memory.showMemory();
+        }
+        else if (ToDo==5){
+            break;
+        }
+        cout << "what do you want to do ? " << endl
+             << "1)display the status of the REGISTERS " << endl
+             << "2)display the status of the PC " << endl
+             << "3)display the status of the IR " << endl
+             << "4)display the status of the MEMORY " << endl
+             << "5) if you want to exit the program";
+        ToDo=getIntegerInput();
+    }
 }
 
 // Test Jump

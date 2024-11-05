@@ -4,7 +4,7 @@
 #include "memory.h"
 
 
-Memory::Memory() : Instructions(256, "00") {}; 
+Memory::Memory() : Instructions(256, "00") {};
 
 
 vector<string> Memory::ReadToVector(string name) {
@@ -94,5 +94,13 @@ string Memory::getCell(int address)
     {
         cout << "invalid address";
         return "XX"; //for non void return
+    }
+}
+void Memory::showMemory() {
+    for (int i = 0; i < Instructions.size(); i++) {
+        cout << Instructions[i] << " ";
+        if ((i + 1) % 16 == 0) {
+            cout << endl;
+        }
     }
 }

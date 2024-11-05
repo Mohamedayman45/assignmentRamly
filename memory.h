@@ -14,7 +14,7 @@ public:
     string getCell(int address); // Instance method
     virtual void setCell(int address, string value);
     vector<string> Instructions; // Instance member
-
+    void showMemory();
 private:
     bool isValidHexCharacter(char c); // Instance validation function
     bool isValidInstruction(const string& word); // Instance validation function
