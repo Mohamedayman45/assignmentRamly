@@ -13,6 +13,7 @@ class machine
 {
 private:
     MemoryRegisters registers;
+
 public:
     void load1(int r, string value);
     void load2(int r, string value);

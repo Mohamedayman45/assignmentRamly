@@ -8,19 +8,16 @@ using namespace std;
 #ifndef A1_T4_MAIN_ALU_H
 #define A1_T4_MAIN_ALU_H
 
-
-class ALU {
-    public:
-        int hexToDec(string hex);
-        string HexToBinary(string hex);
-        string convertFractionalPartToBinary(double fractionalPart);
-        string binaryToHex(const string& binary);
-        string convertDecimalToBinary(double number, int &normalizedExponent);
-        double convertBinaryToDecimal(int sign, int exponentShift, const string &BinaryMantissaWithoutZeroes);
-        string convertDecimalToFloatingPoint(double decimalNumber);
-
+class ALU
+{
+public:
+    void explicitNormalize(const string &binary, int &exponent, string &mantissa);
+    int hexToDec(string hex);
+    double convertBinaryToDecimal(int sign, int exponentShift, const string &BinaryMantissaWithoutZeroes);
+    string HexToBinary(string hex);
+    string binaryToHex(const string &binary);
+    string doubleToBinaryString(double number);
+    string convertTo8BitFloatingPoint(const string &binary, string sign);
 };
 
-
-
-#endif //A1_T4_MAIN_ALU_H
+#endif // A1_T4_MAIN_ALU_H
